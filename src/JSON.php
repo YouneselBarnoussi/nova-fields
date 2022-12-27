@@ -8,10 +8,11 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Contracts\Resolvable;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\SupportsDependentFields;
 
 class JSON extends Field
 {
-    use Configurable, HasChilds;
+    use Configurable, HasChilds, SupportsDependentFields;
 
     /**
      * The base input classes of the field.
@@ -196,7 +197,7 @@ class JSON extends Field
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return array_merge(parent::jsonSerialize(), [
             'panelTitleClasses' => $this->panelTitleClasses,

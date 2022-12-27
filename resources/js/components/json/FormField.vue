@@ -2,7 +2,7 @@
   <div>
     <r64-default-field
       v-if="!field.flatten"
-      :field="field"
+      :field="currentField"
       :hide-label="field.hideLabelInForms"
       :field-classes="field.fieldClasses"
       :wrapper-classes="field.wrapperClasses"
@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
 import HasChildFields from '../../mixins/HasChildFields'
 import FormFieldItem from './FormFieldItem'
 
 export default {
-  mixins: [FormField, HandlesValidationErrors, HasChildFields],
+  mixins: [DependentFormField, HandlesValidationErrors, HasChildFields],
 
   components: { FormFieldItem },
 
